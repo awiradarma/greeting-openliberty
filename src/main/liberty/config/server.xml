@@ -15,8 +15,10 @@
         <feature>servlet-4.0</feature>
     </featureManager>
     <mpMetrics authentication="false"/>
+    <httpAccessLogging id="accessLogging"/>
     <variable name="default.http.port" defaultValue="9080"/>
-    <httpEndpoint httpPort="${default.http.port}" id="defaultHttpEndpoint"  host="*" />
+    <httpEndpoint httpPort="${default.http.port}" id="defaultHttpEndpoint" accessLoggingRef="accessLogging" host="*" />
+    <logging messageFormat="simple" messageSource="message" consoleFormat="json" consoleLogLevel="info" consoleSource="message,trace,accessLog,ffdc,audit" />
 
     <webApplication id="greeting" location="Greeting.war" contextRoot="/" />
 </server>
